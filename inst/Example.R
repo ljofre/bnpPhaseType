@@ -1,24 +1,13 @@
 
-data=read.table(file="./data_example.csv", sep=",", header=F)
-y = data$V1
+library(bnpPhaseType)
+
+data("simdata")
+y = simdata$X
 hist(y, breaks = 50)
 
 # Libraries 
 
-library(MCMCpack)
-library(truncnorm)
-library(GB2)
-library(GIGrvg)
-library(Matrix)
-library(FAdist)
-
-# External functions
-source("weights.R")
-source("phi_posterior.R")
-source("mcmcErlangMix.R")
-
 fys = mcmcErlangMix( Y=y, a=0.1, b=0.1, aa=2, bb=0.1, alpha=1, beta=1, nscan=10000, nburn=2000, nskip=8 )
-
 
 # Grid
 tau.grid = seq( 0, 1.2*max(y), 0.1 )

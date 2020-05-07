@@ -1,4 +1,23 @@
-mcmcErlangMix = function( Y, a, b, aa, bb, alpha, beta, nscan, nburn, nskip )
+#' @title Markov Chain Monte Carlo phase type parameters estimation
+#' @description Greet a person and appropriately capitalize their name.
+#'
+#' @param Y Your name (character string; e.g. "john doe").
+#' @param a Your name (character string; e.g. "john doe").
+#' @param b Your name (character string; e.g. "john doe").
+#' @param aa Your name (character string; e.g. "john doe").
+#' @param bb Your name (character string; e.g. "john doe").
+#' @param alpha Your name (character string; e.g. "john doe").
+#' @param beta Your name (character string; e.g. "john doe").
+#' @param nscan Your name (character string; e.g. "john doe").
+#' @param nburn Your name (character string; e.g. "john doe").
+#' @param nskip Your name (character string; e.g. "john doe").
+#' 
+#' @return A Markov Chain Monte Carlo
+#' 
+#' @export
+#'
+#' @importFrom truncnorm rtruncnorm
+mcmcErlangMix <- function( Y, a, b, aa, bb, alpha, beta, nscan, nburn, nskip )
 {   
 
 # Fixed values
@@ -21,7 +40,8 @@ M = 1
 N = 10
 d = sample( x = 1 : N , size = n, replace = TRUE) 
 v = rbeta( n = N, shape1 = 1, shape2 = M )
-temp = weights(N = N, v = v)
+temp = weights(v = v)
+#temp = weights(N = N, v = v)
 w = c( temp, ( 1 - sum( temp ) ) )
 N = N + 1
 R = rgamma( n = N, shape = aa, rate = bb )
@@ -46,6 +66,9 @@ for ( k in 2 : nscan )
 {
 # Step 1: Updating d and N
 Nante = N
+
+# todo: migrar este a Rcpp
+# testear que el resultado este bueno
 NN = vector( mode = "numeric", length = n)
 	for ( i  in 1: n )
 		{
@@ -56,7 +79,7 @@ NN = vector( mode = "numeric", length = n)
 			den1 = dgamma( x = Y[i], shape = KRtemp, rate = lambda )
 			prob1 = den1 / sum(den1)
 			m1 = length(kk1)
-			if ( m1 == 1 ) {d[i] = kk1 }
+			if ( m1 == 1 ) {d[i] = kk1}
 			else {d[i] = sample( x = kk1, size = 1, replace = FALSE, prob = prob1 )}
 		}
 N = max(NN)
@@ -103,7 +126,8 @@ for( j in 1 : N )
 			}		
 	}
 
-temp2 = weights(N = N, v = v)
+temp2 = weights(v = v)
+#temp2 = weights(N = N, v = v)
 w = c( temp2, ( 1 - sum( temp2 ) ) )
 temp3 = rgamma( n = 1, shape = aa, rate = bb )
 R = c( R, temp3 )

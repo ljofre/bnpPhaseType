@@ -1,4 +1,15 @@
-# Function to take a random draw from the p(phi_j | ....)
+#' Function to take a random draw from the p(phi_j | ....)
+#' 
+#' @title posterior distribution
+#' @description Greet a person and appropriately capitalize their name.
+#'
+#' @param y Your name (character string; e.g. "john doe").
+#' @param lambda Your name (character string; e.g. "john doe").
+#' @param aa Your name (character string; e.g. "john doe").
+#' @param bb Your name (character string; e.g. "john doe").
+#' @param R_ante Your name (character string; e.g. "john doe").
+#' @importFrom  truncnorm rtruncnorm dtruncnorm
+#' @importFrom stats dgamma rbeta rgamma runif
 phi_posterior = function( y, lambda, aa, bb, R_ante )
 	{	
 		cc = 0.1 ; nn = 2
@@ -8,7 +19,7 @@ phi_posterior = function( y, lambda, aa, bb, R_ante )
 		Rtemp[1] = R_ante
 		for ( t in 2 : nn )
 		{		
-		R_aste = rtruncnorm( n = 1, a = 0, b = Inf, mean = R_ante , sd = cc )
+		R_aste = truncnorm::rtruncnorm( n = 1, a = 0, b = Inf, mean = R_ante , sd = cc )
 		KR_aste = ceiling( R_aste )
 		ln_R_aste = nj * KR_aste * log( lambda ) + ( KR_aste-1 ) * sum( log( y ) ) - log( nj ) - lfactorial( (KR_aste - 1) ) + ( aa - 1 ) * log( R_aste ) - bb * R_aste
 		ln_R_ante = nj * KR_ante * log( lambda ) + ( KR_ante-1 ) * sum( log( y ) ) - log( nj ) - lfactorial( (KR_ante - 1) ) + ( aa - 1 ) * log( R_ante ) - bb * R_ante

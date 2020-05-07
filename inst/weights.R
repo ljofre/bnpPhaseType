@@ -8,15 +8,18 @@
 #' @return A weights vector with the Stick-Breaking representation
 #' @export
 #'
-#' @examples
-#' hello("james bond")
-weights = function(N, v)
+weights = function(v)
 	{
-		w = vector( mode = "numeric", length = N )
-		if( N == 1) { w[1] = v[1] }
+    N <- length(v)
+		w = base::vector( mode = "numeric", length = N )
+		
+		w[1] = v[1]
+		
+		if( N == 1) { 
+		  return(w)
+		  }
 		else
 			{
-				w[1] = v[1]
 				for ( j in 2 : N )
 					{
 						w[j] = v[j]
@@ -27,4 +30,8 @@ weights = function(N, v)
 					}
 			}
 			return( w )
-	}
+}
+
+we <- function(v){
+  
+}

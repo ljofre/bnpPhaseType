@@ -1,0 +1,60 @@
+\documentclass{cup-pan}
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.align="right", 
+               fig.height=3.3, 
+               fig.pos = "!H",
+               warning=FALSE, 
+               message = FALSE)
+opts_knit$set(out.format = "latex")
+@
+
+
+\title{Tópicos en Estadística}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+El presente informe se reporta los avances y mejoras en la implementación en R de los principales resultados publicados en el artículo "bayesian non parametric phase type distribution". Las mejoras e implementaciones corresponden a las siguientes lineas.
+\end{abstract}
+\begin{enumerate}
+\item Optimización de las funciones computacionalmente críticas implementándola en el lenguaje de programación C++ como lo son el stick-breaking
+\item Implementación de la función de renovación basado en la estimación ...
+
+\end{enumerate}
+
+
+\section{Anexo}
+
+\subsection{Instalación de la librería bnpPhaseType}
+
+La librería se puede instalar en dos instancias distintas, una es la versión de desarrollo mantenida en github y el release oficial mantenido en cran. Para instalar la versión de desarrollo.
+
+<<>>=
+library(devtools)
+
+install_github("ljofre/bnpPhaseType")
+@
+
+
+
+\subsection{Ejemplos de uso de la librería bnpPhaseType}
+
+<<>>=
+library(bnpPhaseType)
+@
+
+\subsection{Benchmark de la nuevas implementaciones}
+
+Las mejoras en términos de performance de la función **mcmcErlangMix** 
+
+
+
+
+
+
+
+
+
+\end{document}

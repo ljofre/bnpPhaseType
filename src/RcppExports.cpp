@@ -5,19 +5,20 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _bnpPhaseType_rcpp_hello_world() {
+// weights
+NumericVector weights(NumericVector v);
+RcppExport SEXP _bnpPhaseType_weights(SEXP vSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(weights(v));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_bnpPhaseType_rcpp_hello_world", (DL_FUNC) &_bnpPhaseType_rcpp_hello_world, 0},
+    {"_bnpPhaseType_weights", (DL_FUNC) &_bnpPhaseType_weights, 1},
     {NULL, NULL, 0}
 };
 
