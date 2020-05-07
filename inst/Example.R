@@ -1,6 +1,8 @@
 
 library(bnpPhaseType)
 
+library(GeneralizedHyperbolic)
+
 data("simdata")
 y = simdata$X
 hist(y, breaks = 50)

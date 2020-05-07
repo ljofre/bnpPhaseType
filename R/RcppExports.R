@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 weights <- function(v) {
-    .Call('_bnpPhaseType_weights', PACKAGE = 'bnpPhaseType', v)
+    .Call(`_bnpPhaseType_weights`, v)
 }
 

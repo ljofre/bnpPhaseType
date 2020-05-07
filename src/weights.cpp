@@ -19,7 +19,7 @@ NumericVector weights(NumericVector v){
   cp.push_front(1.0);
   return v*cp;
   }
-
+ 
 /*** R
 
 library(bnpPhaseType)
