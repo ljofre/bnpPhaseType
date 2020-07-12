@@ -2,6 +2,7 @@
 
 export(mcmcErlangMix)
 importFrom(Rcpp,sourceCpp)
+importFrom(plyr,rbind.fill.matrix)
 importFrom(stats,dgamma)
 importFrom(stats,rbeta)
 importFrom(stats,rgamma)

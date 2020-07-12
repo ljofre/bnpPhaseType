@@ -19,10 +19,9 @@ NumericVector weights(NumericVector v){
   cp.push_front(1.0);
   return v*cp;
   }
- 
+
 /*** R
 
-library(bnpPhaseType)
 library(MCMCpack)
 
 w <- rbeta(n=100000, shape1 = 1, shape2 = 3)
@@ -37,7 +36,7 @@ stick_breaking_process = function(v)
   remaining_stick_lengths = c(1, cumprod(1 - v))[1:num_weights] 
   weights = remaining_stick_lengths * v  
   weights
-}
+} 
 
 microbenchmark(w1 <- stick_breaking_process(v))
 sum(w1)

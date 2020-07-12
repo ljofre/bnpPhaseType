@@ -1,6 +1,6 @@
 Package: bnpPhaseType
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Bayesian Non Parametric library for Phase Type distribution
 Version: 1.0
 Date: 2020-04-03
 Author: Your Name
@@ -17,5 +17,6 @@ Imports:
   GIGrvg,
   Matrix,
   FAdist,
+  plyr
 LinkingTo: Rcpp
 RoxygenNote: 7.1.0
