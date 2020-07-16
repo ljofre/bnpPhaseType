@@ -3,7 +3,7 @@ Type: Package
 Title: Bayesian Non Parametric library for Phase Type distribution
 Version: 1.0
 Date: 2020-04-03
-Author: Your Name
+Author: Equipo
 Maintainer: Leonardo Andres Jofre Flor <lnjofre@uc.cl>
 Description: One paragraph description of what the package does as one or more
         full sentences.
@@ -20,3 +20,4 @@ Imports:
   plyr
 LinkingTo: Rcpp
 RoxygenNote: 7.1.0
+Encoding: UTF-8

@@ -1,6 +1,26 @@
-library(MCMCpack)
-library(mcompanion)
-
+#' @title Markov Chain Monte Carlo phase type parameters estimation
+#' @description Greet a person and appropriately capitalize their name.
+#'
+#' @param n Your name (character string; e.g. "john doe").
+#' @param alpha Your name (character string; e.g. "john doe").
+#' @param T Your name (character string; e.g. "john doe").
+#'
+#' @return A Markov Chain Monte Carlo
+#'
+#' @export
+#'
+#' @examples
+#'library(bnpPhaseType)
+#'
+#' @importFrom stats rmultinom rexp rbinom
+rPhDistribution <- function(n, alpha=alpha, T=T)
+{
+  # uniformization
+  q <- length(alpha)
+  lamb <- max(-diag(T))
+  P = (1/lamb)*T + diag(q)
+  replicate(n, rph(alpha=alpha, lamb = lamb, P=P, t=0))
+}
 
 rph <- function(alpha, lamb, P, t)
   {
@@ -19,14 +39,4 @@ rph <- function(alpha, lamb, P, t)
       t + rexp(n=1, rate = lamb)
     }
   }
-}
-
-
-rPhDistribution <- function(n, alpha=alpha, T=T)
-{
-  # uniformization
-  q <- length(alpha)
-  lamb <- max(-diag(T))
-  P = (1/lamb)*T + diag(q)
-  replicate(n, rph(alpha=alpha, lamb = lamb, P=P, t=0))
 }

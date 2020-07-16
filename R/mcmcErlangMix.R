@@ -251,7 +251,6 @@ mcmcErlangMix <-
           
         }
       }
-      
       if (sum((k == indexprint) * 1) == 1)
       {
         print(paste0(
