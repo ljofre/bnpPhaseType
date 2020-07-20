@@ -39,10 +39,10 @@ stick_breaking_process = function(v)
 } 
 
 microbenchmark(w1 <- stick_breaking_process(v))
-sum(w1)
+
 
 microbenchmark(w2 <- weights(v=v))
-sum(w2)
+
 
 plot(w1, w2)
 
